@@ -1,0 +1,36 @@
+:root {
+  /* Base background and text */
+  --hp-bg-main: #071310;
+  --hp-text-main: #e8dcca;
+  --hp-text-muted: #bababa;
+  --hp-text-heading: #eee7d0;
+
+  /* Buttons, dividers, borders */
+  --hp-accent-gold: #d4a017;
+  --hp-accent-cream: #fffec6;
+
+  /* House card backgrounds (primary blocks) */
+  --hp-card-gryffindor: #281413;
+  --hp-card-slytherin: #122520;
+  --hp-card-hufflepuff: #131f2b;
+  --hp-card-ravenclaw: #453308;
+
+  /* House card secondary areas */
+  --hp-card-gryffindor-secondary: #493e22;
+  --hp-card-slytherin-secondary: #265954;
+  --hp-card-hufflepuff-secondary: #245f6c;
+  --hp-card-ravenclaw-secondary: #848549;
+
+  /* House backgrounds */
+  --hp-bg-slytherin: #1b3a34;
+  --hp-bg-gryffindor: #3a251b;
+  --hp-bg-hufflepuff: #1b233a;
+  --hp-bg-ravenclaw: #383a1b;
+
+  /* House news blocks */
+  --hp-news-slytherin: #17221c;
+  --hp-news-gryffindor: #221717;
+  --hp-news-hufflepuff: #171822;
+  --hp-news-ravenclaw: #252417;
+}
+
