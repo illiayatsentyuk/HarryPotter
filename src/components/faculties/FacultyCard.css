@@ -1,0 +1,60 @@
+.faculty-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Tenor Sans", sans-serif;
+  gap: 8px;
+  width: 500px;
+  height: 640px;
+  border: 3px solid var(--hp-card-border);
+  padding: 20px 0;
+  border-radius: 15px;
+  background: var(--hp-card-griffindor-background);
+}
+
+.faculty-card--gryffindor {
+  background: var(--hp-card-griffindor-background);
+}
+
+.faculty-card--slytherin {
+  background: var(--hp-card-slytherin-background);
+}
+
+.faculty-card--hufflepuff {
+  background: var(--hp-card-hufflepuff-background);
+}
+
+.faculty-card--ravenclaw {
+  background: var(--hp-card-ravenclaw-background);
+}
+
+.faculty-card__name {
+  font-size: 48px;
+  letter-spacing: -5%;
+  line-height: 120%;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.faculty-card__description {
+  font-family: "Tilt Neon", sans-serif;
+  font-size: 20px;
+  letter-spacing: -5%;
+  line-height: 120%;
+}
+
+.faculty-card__button {
+  font-family: "Tint Neon", sans-serif;
+  font-size: 20px;
+  letter-spacing: -5%;
+  line-height: 120%;
+  margin-bottom: 24px;
+  background: radial-gradient(ellipse 70% 55% at center, #fffec6 46%, #a1804b 100%);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 16px 45px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}

@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router";
 import "./MainLayout.css";
+import footerLogo from "../assets/images/footer-logo.png";
 
 export default function MainLayout() {
   const navItems = [
@@ -10,7 +11,7 @@ export default function MainLayout() {
   ];
 
   return (
-    <>
+    <div className="main-layout">
       <header className="header">
         <img
           src="/src/assets/images/header-logo.png"
@@ -53,12 +54,32 @@ export default function MainLayout() {
           </button>
         </div>
       </header>
-      <main className="main">
+      <main className="main-layout__content">
         <Outlet />
       </main>
       <footer className="footer">
-        <h1>Footer</h1>
+        <div className="footer__top">
+          <img
+            className="footer__logo"
+            src={footerLogo}
+            alt="Harry Potter FunClub"
+          />
+          <nav className="footer__nav" aria-label="Footer">
+            <a className="footer__link" href="#">
+              Member Codex
+            </a>
+            <a className="footer__link" href="#">
+              Contact
+            </a>
+          </nav>
+        </div>
+        <div className="footer__bottom">
+          <p className="footer__copy">
+            © 2026 Potter FunClub. All rights reserved. Unauthorised
+            reproduction is subject to harassment via OwlMail.
+          </p>
+        </div>
       </footer>
-    </>
+    </div>
   );
 }

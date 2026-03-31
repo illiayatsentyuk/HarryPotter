@@ -1,0 +1,27 @@
+.faculties {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  margin-top:57px;
+}
+.faculties__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+.faculties__title {
+  font-size: 48px;
+  font-family: "Cormorant Garamond", sans-serif;
+  letter-spacing: -5%;
+  line-height: 120%;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 24px;
+}

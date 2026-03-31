@@ -3,6 +3,13 @@
   --hp-header-text-color: #978f82;
   --hp-header-text-underline: #b4a890;
 
+  --hp-card-border: #494136;
+
+  --hp-card-griffindor-background: linear-gradient(45deg, #281413 39%, #493e22 100%);
+  --hp-card-slytherin-background: linear-gradient(45deg, #122520 39%, #265954 100%);
+  --hp-card-hufflepuff-background: linear-gradient(45deg, #453308 39%, #848549 100%);;
+  --hp-card-ravenclaw-background: linear-gradient(45deg, #131f2b 39%, #245f6c 100%) ;
+
   /* Base background and text */
   --hp-bg-main: #071310;
   --hp-text-main: #e8dcca;
@@ -42,4 +49,19 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--hp-bg-main);
+  color: var(--hp-text-main);
+  font-family: "Cormorant Garamond", serif;
 }
