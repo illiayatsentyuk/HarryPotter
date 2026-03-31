@@ -1,0 +1,75 @@
+/* BEM block: main-header */
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--hp-header-bg-main);
+  height: 69px;
+  width: 100%;
+}
+
+.header__logo {
+  height: 69px;
+  width: auto;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.header__nav-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 72px;
+  height: 100%;
+}
+
+.header__nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.header__nav-link {
+  color: var(--hp-header-text-color);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -5%;
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+.header__nav-link--active {
+  border-bottom: 1px solid var(--hp-accent-cream);
+  color: var(--hp-accent-cream);
+}
+
+.main-layout__content {
+  padding: 24px;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 20px;
+}
+
+.header__action-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}

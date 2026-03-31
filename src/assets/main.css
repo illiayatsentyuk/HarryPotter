@@ -1,4 +1,8 @@
 :root {
+  --hp-header-bg-main: #17302c;
+  --hp-header-text-color: #978f82;
+  --hp-header-text-underline: #b4a890;
+
   /* Base background and text */
   --hp-bg-main: #071310;
   --hp-text-main: #e8dcca;
@@ -34,3 +38,8 @@
   --hp-news-ravenclaw: #252417;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
