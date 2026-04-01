@@ -12,6 +12,46 @@
   border-radius: 15px;
   background: var(--hp-card-griffindor-background);
   cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+  will-change: transform;
+}
+
+.faculty-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 254, 198, 0.35);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 254, 198, 0.08) inset;
+}
+
+.faculty-card:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+.faculty-card__image {
+  transition: transform 220ms ease;
+}
+
+.faculty-card:hover .faculty-card__image {
+  transform: scale(1.03);
+}
+
+.faculty-card__button {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.faculty-card:hover .faculty-card__button {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+  box-shadow:
+    0 10px 18px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(255, 254, 198, 0.2) inset;
 }
 
 .faculty-card--gryffindor {

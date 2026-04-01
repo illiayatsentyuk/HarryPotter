@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 export default function FacultyCard({ faculty }: { faculty: Faculty }) {
   const facultyKey = faculty.name.trim().toLowerCase();
   const navigate = useNavigate();
-  
+
   return (
     <div
       className={`faculty-card faculty-card--${facultyKey}`}
