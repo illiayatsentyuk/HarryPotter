@@ -1,0 +1,68 @@
+.not-found {
+  min-height: calc(100vh - 69px);
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+}
+
+.not-found__panel {
+  width: min(720px, 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.not-found__code {
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 64px;
+  letter-spacing: -3%;
+  line-height: 1;
+  color: var(--hp-accent-cream);
+  margin-bottom: 12px;
+}
+
+.not-found__title {
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: -5%;
+  line-height: 120%;
+  text-transform: uppercase;
+  color: var(--hp-text-heading);
+  margin-bottom: 10px;
+}
+
+.not-found__text {
+  font-family: "Tilt Neon", sans-serif;
+  color: var(--hp-text-muted);
+  font-size: 18px;
+  letter-spacing: -3%;
+  line-height: 140%;
+}
+
+.not-found__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.not-found__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--hp-accent-cream);
+  text-decoration: none;
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 14px;
+  letter-spacing: -2%;
+  text-transform: uppercase;
+}
+
+.not-found__link:hover {
+  background: rgba(255, 255, 255, 0.06);
+}

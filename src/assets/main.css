@@ -5,10 +5,26 @@
 
   --hp-card-border: #494136;
 
-  --hp-card-griffindor-background: linear-gradient(45deg, #281413 39%, #493e22 100%);
-  --hp-card-slytherin-background: linear-gradient(45deg, #122520 39%, #265954 100%);
-  --hp-card-hufflepuff-background: linear-gradient(45deg, #453308 39%, #848549 100%);;
-  --hp-card-ravenclaw-background: linear-gradient(45deg, #131f2b 39%, #245f6c 100%) ;
+  --hp-card-griffindor-background: linear-gradient(
+    45deg,
+    #281413 39%,
+    #493e22 100%
+  );
+  --hp-card-slytherin-background: linear-gradient(
+    45deg,
+    #122520 39%,
+    #265954 100%
+  );
+  --hp-card-hufflepuff-background: linear-gradient(
+    45deg,
+    #453308 39%,
+    #848549 100%
+  );
+  --hp-card-ravenclaw-background: linear-gradient(
+    45deg,
+    #131f2b 39%,
+    #245f6c 100%
+  );
 
   /* Base background and text */
   --hp-bg-main: #071310;

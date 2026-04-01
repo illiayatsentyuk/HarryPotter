@@ -50,7 +50,11 @@
   letter-spacing: -5%;
   line-height: 120%;
   margin-bottom: 24px;
-  background: radial-gradient(ellipse 70% 55% at center, #fffec6 46%, #a1804b 100%);
+  background: radial-gradient(
+    ellipse 70% 55% at center,
+    #fffec6 46%,
+    #a1804b 100%
+  );
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 16px 45px;
