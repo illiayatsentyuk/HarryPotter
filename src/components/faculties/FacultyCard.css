@@ -11,6 +11,7 @@
   padding: 20px 0;
   border-radius: 15px;
   background: var(--hp-card-griffindor-background);
+  cursor: pointer;
 }
 
 .faculty-card--gryffindor {

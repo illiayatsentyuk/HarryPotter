@@ -1,4 +1,4 @@
-import FacultyCard from "../components/faculties/FacultyCard";
+import FacultyCard from "../../components/faculties/FacultyCard";
 import "./Faculties.css";
 
 export default function Faculties() {
