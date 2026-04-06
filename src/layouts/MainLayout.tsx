@@ -33,7 +33,9 @@ export default function MainLayout() {
                       pathname.startsWith("/faculty");
                     const isArchiveSectionActive =
                       item.to === "/" &&
-                      (pathname === "/" || pathname === "/quiz");
+                      (pathname === "/" ||
+                        pathname === "/quiz" ||
+                        pathname === "/quiz-result");
                     const active =
                       isActive ||
                       isFacultySectionActive ||

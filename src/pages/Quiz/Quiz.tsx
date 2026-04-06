@@ -1,78 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { isQuizComplete, QUIZ_QUESTIONS } from "./quizData";
 import "./Quiz.css";
 
-type Question = {
-  id: string;
-  title: string;
-  options: string[];
-};
-
-const QUESTIONS: Question[] = [
-  {
-    id: "q1",
-    title: "Question 1: Which path to success will you choose?",
-    options: [
-      "The shortest one, even if it means bending the rules.",
-      "The most difficult one, where I can show my courage.",
-      "The most logical one, planned down to the smallest detail.",
-      "The one where I can help others.",
-    ],
-  },
-  {
-    id: "q2",
-    title:
-      "Question 2: What are you most afraid of hearing said about yourself?",
-    options: [
-      "He’s ordinary and has achieved nothing.",
-      "He chickened out when he was needed.",
-      "He made a mistake out of ignorance.",
-      "He betrayed our friendship.",
-    ],
-  },
-  {
-    id: "q3",
-    title: "Question 3: Your ideal evening at Hogwarts?",
-    options: [
-      "A secret meeting in the dungeons to plan a strategy.",
-      "Practising on broomsticks in the rain.",
-      "Studying a rare scroll in the library.",
-      "Having tea by the fireplace with friends and elves.",
-    ],
-  },
-  {
-    id: "q4",
-    title:
-      "4. You see a senior student bullying a junior. What is your first reaction?",
-    options: [
-      "I’ll assess the situation: if it’s an influential student, it’s better to act tactfully later.",
-      "I’ll intervene immediately, even if my opponent’s strength far outweighs mine.",
-      "I’ll find a logical way to stop it or call a professor.",
-      "I’ll stand between them to protect the weaker one and try to settle things peacefully.",
-    ],
-  },
-  {
-    id: "q5",
-    title: "5. What do you see in the Mirror of Erised?",
-    options: [
-      "Myself at the pinnacle of power, where the whole world recognises my superiority.",
-      "Myself as a legendary hero holding a cup after a great battle.",
-      "Myself in an endless archive, where I possess all the secrets of the universe.",
-      "Myself in a cosy circle of loyal friends, where everyone is happy and safe.",
-    ],
-  },
-  {
-    id: "q6",
-    title: "6. Which trait in people disgusts you the most?",
-    options: [
-      "Weakness of spirit and a lack of any ambition in life.",
-      "Cowardice when faced with difficult decisions.",
-      "Ignorance and a reluctance to question the obvious.",
-      "Ingratitude for kindness and indifference to the feelings of loved ones.",
-    ],
-  },
-];
-
 export default function Quiz() {
+  const navigate = useNavigate();
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -82,10 +14,16 @@ export default function Quiz() {
   };
 
   const handleShowResults = () => {
-    setSubmitted(true);
+    if (!isQuizComplete(answers)) {
+      setSubmitted(true);
+      return;
+    }
+    navigate("/quiz-result", { state: { answers } });
   };
 
-  const answeredCount = QUESTIONS.filter((q) => answers[q.id] !== undefined).length;
+  const answeredCount = QUIZ_QUESTIONS.filter(
+    (q) => answers[q.id] !== undefined,
+  ).length;
 
   return (
     <div className="quiz">
@@ -99,7 +37,7 @@ export default function Quiz() {
             handleShowResults();
           }}
         >
-          {QUESTIONS.map((q) => (
+          {QUIZ_QUESTIONS.map((q) => (
             <fieldset key={q.id} className="quiz__question">
               <legend className="quiz__question-title">{q.title}</legend>
               <div className="quiz__options" role="radiogroup">
@@ -132,9 +70,7 @@ export default function Quiz() {
 
         {submitted && (
           <p className="quiz__hint" role="status">
-            {answeredCount === QUESTIONS.length
-              ? "The Sorting Hat is deliberating… (results are a work in progress)."
-              : `Answer all ${QUESTIONS.length} questions to see your house. (${answeredCount}/${QUESTIONS.length} answered)`}
+            {`Answer all ${QUIZ_QUESTIONS.length} questions to see your house. (${answeredCount}/${QUIZ_QUESTIONS.length} answered)`}
           </p>
         )}
       </div>

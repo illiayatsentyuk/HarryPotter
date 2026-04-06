@@ -1,0 +1,27 @@
+/* Quiz-result headline; card uses `FacultyCard` + `FacultyCard.css` */
+
+.quiz-result {
+  --quiz-result-pad-x: clamp(24px, 12vw, 183px);
+  background: #071310;
+  padding: 48px var(--quiz-result-pad-x) 80px;
+  color: #978f82;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quiz-result__title {
+  margin: 0 0 40px;
+  max-width: 1184px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.21;
+  color: #c3c9af;
+}
+
+.quiz-result__title-line {
+  display: block;
+}
