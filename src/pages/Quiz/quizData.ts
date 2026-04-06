@@ -1,11 +1,6 @@
 import { EFaculty } from "../../enums/Faculties.enum";
 import type { Faculty } from "../../types/Faculty.type";
-
-export type QuizQuestion = {
-  id: string;
-  title: string;
-  options: string[];
-};
+import type { QuizQuestion } from "../../types/quiz.type";
 
 /** Option index maps to house (same order for every question). */
 const OPTION_TO_FACULTY: EFaculty[] = [

@@ -6,13 +6,12 @@ import {
   getFacultyForCard,
   isQuizComplete,
 } from "../Quiz/quizData";
+import type { QuizResultLocationState } from "../../types/quiz.type";
 import "./QuizResult.css";
-
-type LocationState = { answers?: Record<string, number> };
 
 export default function QuizResult() {
   const location = useLocation();
-  const state = location.state as LocationState | null;
+  const state = location.state as QuizResultLocationState | null;
   const answers = state?.answers;
 
   const facultyEnum = useMemo(() => {

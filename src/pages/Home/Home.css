@@ -146,6 +146,7 @@
   grid-template-columns: minmax(0, 550px) minmax(0, 250px) minmax(0, 200px);
   gap: 38px;
   align-items: start;
+  justify-content: center;
 }
 
 .home__card {
