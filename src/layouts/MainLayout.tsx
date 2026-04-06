@@ -1,8 +1,10 @@
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, useLocation } from "react-router";
 import "./MainLayout.css";
 import footerLogo from "../assets/images/footer-logo.png";
 
 export default function MainLayout() {
+  const { pathname } = useLocation();
+
   const navItems = [
     { label: "The Archive", to: "/" },
     { label: "Faculties", to: "/faculties" },
@@ -24,12 +26,22 @@ export default function MainLayout() {
               <li key={item.to} className="header__nav-item">
                 <NavLink
                   to={item.to}
-                  end={item.to === "/"}
-                  className={({ isActive }) =>
-                    isActive
+                  end={item.to === "/" || item.to === "/faculties"}
+                  className={({ isActive }) => {
+                    const isFacultySectionActive =
+                      item.to === "/faculties" &&
+                      pathname.startsWith("/faculty");
+                    const isArchiveSectionActive =
+                      item.to === "/" &&
+                      (pathname === "/" || pathname === "/quiz");
+                    const active =
+                      isActive ||
+                      isFacultySectionActive ||
+                      isArchiveSectionActive;
+                    return active
                       ? "header__nav-link header__nav-link--active"
-                      : "header__nav-link"
-                  }
+                      : "header__nav-link";
+                  }}
                 >
                   {item.label}
                 </NavLink>

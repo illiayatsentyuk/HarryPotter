@@ -1,0 +1,245 @@
+/* Home — Desktop-1 (main only; header/footer in MainLayout). Matches pencil-new.pen */
+
+.home {
+  --home-max: 1440px;
+  --home-pad-x: clamp(24px, 12vw, 183px);
+  background: #071310;
+  color: var(--hp-text-main);
+  padding: 48px var(--home-pad-x) 80px;
+}
+
+/* —— Hero —— */
+.home__hero {
+  max-width: var(--home-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 674px);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+
+.home__hero-content {
+  min-width: 0;
+}
+
+.home__hero-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.home__hero-title-line {
+  display: block;
+}
+
+.home__hero-title-line--bright {
+  color: #eee7d0;
+}
+
+.home__hero-title-line--muted {
+  color: #ded3bc;
+}
+
+.home__hero-description {
+  margin: 24px 0 0;
+  max-width: 411px;
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.45;
+  color: #b2b5ac;
+}
+
+.home__hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+  min-width: 310px;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: radial-gradient(
+    ellipse 120% 55% at center,
+    #fffec6 46%,
+    #a1804b 100%
+  );
+  box-shadow: 0 4px 3.5px rgba(219, 190, 125, 0.31);
+  font-family: "Tilt Neon", sans-serif;
+  font-size: 20px;
+  letter-spacing: -0.05em;
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.home__hero-cta:hover {
+  filter: brightness(1.05);
+}
+
+.home__hero-visual {
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.home__hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 674 / 479;
+  object-fit: cover;
+}
+
+/* —— Stats + divider —— */
+.home__devider {
+  max-width: var(--home-max);
+  margin: 48px auto 0;
+  text-align: center;
+}
+
+.home__devider-text {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.15;
+  color: #ab9a6c;
+}
+
+.home__devider-line {
+  margin: 24px auto 0;
+  max-width: 879px;
+  border: none;
+  border-top: 1px solid #ab9a6c;
+  box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.5);
+}
+
+/* —— Daily Prophet + news grid —— */
+.home__news {
+  margin-top: 48px;
+  max-width: var(--home-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home__news-heading {
+  margin: 0 0 40px;
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.15;
+  color: #fff;
+}
+
+.home__news-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 550px) minmax(0, 250px) minmax(0, 200px);
+  gap: 38px;
+  align-items: start;
+}
+
+.home__card {
+  border-radius: 15px;
+  border: 1px solid #26312d;
+  background: #16211b;
+  padding: 20px 24px 24px;
+  box-sizing: border-box;
+}
+
+.home__card-title {
+  margin: 0 0 16px;
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.2;
+  color: #e8e5de;
+}
+
+.home__card-text {
+  margin: 0;
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 1.45;
+  color: #c3c3bb;
+}
+
+.home__card--feature .home__card-media {
+  margin: 16px 0 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.home__card-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 458 / 287;
+  object-fit: cover;
+}
+
+.home__card--decrees {
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home__decrees-block + .home__decrees-block {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid #34413c;
+}
+
+.home__news-col {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.home__card--compact {
+  min-height: 200px;
+}
+
+@media (max-width: 1200px) {
+  .home__news-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .home__news-col {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .home__card--compact {
+    flex: 1;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 900px) {
+  .home__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .home__news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home__news-col {
+    flex-direction: column;
+  }
+}

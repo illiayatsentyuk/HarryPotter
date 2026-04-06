@@ -5,7 +5,8 @@ import Cards from "./pages/Cards/Cards.tsx";
 import Characters from "./pages/Characters.tsx";
 import Faculties from "./pages/Faculties/Faculties.tsx";
 import Faculty from "./pages/Faculty/Faculty.tsx";
-import Home from "./pages/Home.tsx";
+import Home from "./pages/Home/Home.tsx";
+import Quiz from "./pages/Quiz/Quiz.tsx";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/quiz" element={<Quiz />} />
           <Route path="/faculties" element={<Faculties />} />
           <Route path="/characters" element={<Characters />} />
           <Route path="/cards" element={<Cards />} />
