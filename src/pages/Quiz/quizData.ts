@@ -1,3 +1,4 @@
+import { FACULTY_CARD_IMAGES } from "../../assets/images/facultyCards";
 import { EFaculty } from "../../enums/Faculties.enum";
 import type { Faculty } from "../../types/Faculty.type";
 import type { QuizQuestion } from "../../types/quiz.type";
@@ -132,22 +133,22 @@ export const FACULTY_RESULT_META: Record<
   [EFaculty.GRYFFINDOR]: {
     name: "Gryffindor",
     description: "COURAGE, CHIVALPY,DARING.",
-    image: "/src/assets/images/faculties/gryffindor.png",
+    image: FACULTY_CARD_IMAGES[EFaculty.GRYFFINDOR],
   },
   [EFaculty.SLYTHERIN]: {
     name: "Slytherin",
     description: "AMBITION, CUNNING, RESOURCEFULNESS.",
-    image: "/src/assets/images/faculties/slytherin.png",
+    image: FACULTY_CARD_IMAGES[EFaculty.SLYTHERIN],
   },
   [EFaculty.HUFFLEPUFF]: {
     name: "Hufflepuff",
     description: "WIT, LEARNING, WISDOM.",
-    image: "/src/assets/images/faculties/hufflepuff.png",
+    image: FACULTY_CARD_IMAGES[EFaculty.HUFFLEPUFF],
   },
   [EFaculty.RAVENCLAW]: {
     name: "Ravenclaw",
     description: "LOYALTY, PATIENCE, HARD WORK.",
-    image: "/src/assets/images/faculties/ravenclaw.png",
+    image: FACULTY_CARD_IMAGES[EFaculty.RAVENCLAW],
   },
 };
 

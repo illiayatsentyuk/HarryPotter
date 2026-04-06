@@ -1,6 +1,11 @@
 import { NavLink, Outlet, useLocation } from "react-router";
+import {
+  footerLogo,
+  headerLogo,
+  searchIcon,
+  userIcon,
+} from "../assets/images/layout";
 import "./MainLayout.css";
-import footerLogo from "../assets/images/footer-logo.png";
 
 export default function MainLayout() {
   const { pathname } = useLocation();
@@ -16,7 +21,7 @@ export default function MainLayout() {
     <div className="main-layout">
       <header className="header">
         <img
-          src="/src/assets/images/header-logo.png"
+          src={headerLogo}
           className="header__logo"
           alt="Harry Potter"
         />
@@ -54,14 +59,14 @@ export default function MainLayout() {
         <div className="header__actions">
           <button className="header__action-button" type="button">
             <img
-              src="/src/assets/icons/search.svg"
+              src={searchIcon}
               className="header__action-icon"
               alt="Search"
             />
           </button>
           <button className="header__action-button" type="button">
             <img
-              src="/src/assets/icons/user.svg"
+              src={userIcon}
               className="header__action-icon"
               alt="User"
             />

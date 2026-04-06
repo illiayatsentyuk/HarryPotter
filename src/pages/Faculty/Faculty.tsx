@@ -1,5 +1,6 @@
 import "./Faculty.css";
 import { Link, Navigate, useParams } from "react-router";
+import { FACULTY_PAGE_ASSETS } from "../../assets/images/facultyPages";
 import { EFaculty } from "../../enums/Faculties.enum";
 
 export default function Faculty() {
@@ -10,9 +11,7 @@ export default function Faculty() {
       name: EFaculty.GRYFFINDOR,
       motto:
         "Welcome, newcomers, to the realm of the brave-hearted. Courage, chivalry and resolve guide our path. Step into the light.",
-      logo: `/src/assets/images/faculty/${EFaculty.GRYFFINDOR}/${EFaculty.GRYFFINDOR}-logo.png`,
-      background: `/src/assets/images/faculty/${EFaculty.GRYFFINDOR}/${EFaculty.GRYFFINDOR}-background.png`,
-      relic: `/src/assets/images/faculty/${EFaculty.GRYFFINDOR}/${EFaculty.GRYFFINDOR}-relic.png`,
+      ...FACULTY_PAGE_ASSETS[EFaculty.GRYFFINDOR],
       relicTitle: "Godric Gryffindor’s Sword (The Goblin-Made Masterpiece)",
       relicDescription:
         "This sword appears only when a true Gryffindor is in danger and shows true courage. Forged by goblins, it absorbs only that which makes it stronger — such as basilisk venom. It is not merely a weapon; it is a symbol of our spirit.",
@@ -37,9 +36,7 @@ export default function Faculty() {
       motto:
         "Welcome, ambitious student. You have entered the vaults. Ambition, Cunning, and Pride define our line.",
       name: EFaculty.SLYTHERIN,
-      logo: `/src/assets/images/faculty/${EFaculty.SLYTHERIN}/${EFaculty.SLYTHERIN}-logo.png`,
-      background: `/src/assets/images/faculty/${EFaculty.SLYTHERIN}/${EFaculty.SLYTHERIN}-background.png`,
-      relic: `/src/assets/images/faculty/${EFaculty.SLYTHERIN}/${EFaculty.SLYTHERIN}-relic.png`,
+      ...FACULTY_PAGE_ASSETS[EFaculty.SLYTHERIN],
       relicTitle: "Salazar Slytherin’s Locket (Replica of the Lost Horcrux)",
       relicDescription: `This medallion was seized from a private auction in London just a few hours before it was due to begin. According to our sources, the original belonged to Salazar Slytherin and became a symbol not only of ambition but also of unwavering will. Our masters have cleansed the artefact of any residual dark energy. It is now safe for study within Slytherin’s Common Room.`,
       news: [
@@ -63,9 +60,7 @@ export default function Faculty() {
       motto:
         "Where they are just and loyal. Those patient Hufflepuffs are true and unafraid of toil. Welcome home.",
       name: EFaculty.HUFFLEPUFF,
-      logo: `/src/assets/images/faculty/${EFaculty.HUFFLEPUFF}/${EFaculty.HUFFLEPUFF}-logo.png`,
-      background: `/src/assets/images/faculty/${EFaculty.HUFFLEPUFF}/${EFaculty.HUFFLEPUFF}-background.png`,
-      relic: `/src/assets/images/faculty/${EFaculty.HUFFLEPUFF}/${EFaculty.HUFFLEPUFF}-relic.png`,
+      ...FACULTY_PAGE_ASSETS[EFaculty.HUFFLEPUFF],
       relicTitle: "Helga Hufflepuff’s Cup",
       relicDescription:
         "A golden bowl with two handles and an engraved badger. It symbolises hospitality and generosity. It is said that the drinks in this bowl never run out if you drink them with a kind heart.",
@@ -90,9 +85,7 @@ export default function Faculty() {
       motto:
         "An incomparable mind is a person’s greatest treasure. The stars are our guide, and knowledge is our strength. Welcome to the team.",
       name: EFaculty.RAVENCLAW,
-      logo: `/src/assets/images/faculty/${EFaculty.RAVENCLAW}/${EFaculty.RAVENCLAW}-logo.png`,
-      background: `/src/assets/images/faculty/${EFaculty.RAVENCLAW}/${EFaculty.RAVENCLAW}-background.png`,
-      relic: `/src/assets/images/faculty/${EFaculty.RAVENCLAW}/${EFaculty.RAVENCLAW}-relic.png`,
+      ...FACULTY_PAGE_ASSETS[EFaculty.RAVENCLAW],
       relicTitle: "Rowena Ravenclaw’s Diadem (Restored Fragment)",
       relicDescription:
         "A tiara that bestows wisdom upon all who wear it. It was lost for centuries, but the memory of it has always lived on within these walls. We are studying its structure to understand how knowledge is transformed into power.",

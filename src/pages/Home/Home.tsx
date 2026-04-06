@@ -1,7 +1,6 @@
 import { Link } from "react-router";
+import { homeCupImage, homeHeroImage } from "../../assets/images/home";
 import "./Home.css";
-import triwizardImage from "../../assets/images/home/cup-home.png";
-import heroImage from "../../assets/images/home/magic-home.png";
 
 export default function Home() {
   return (
@@ -27,7 +26,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="home__hero-visual">
-          <img className="home__hero-img" src={heroImage} alt="" />
+          <img className="home__hero-img" src={homeHeroImage} alt="" />
         </div>
       </div>
 
@@ -47,7 +46,7 @@ export default function Home() {
               TRIWIZARD TOURNAMENT: 100 YEARS LATER
             </h3>
             <div className="home__card-media">
-              <img src={triwizardImage} alt="" />
+              <img src={homeCupImage} alt="" />
             </div>
             <p className="home__card-text">
               A look back at the darkest moments in the tournament’s history.

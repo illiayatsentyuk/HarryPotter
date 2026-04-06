@@ -1,4 +1,6 @@
 import FacultyCard from "../../components/faculties/FacultyCard";
+import { FACULTY_CARD_IMAGES } from "../../assets/images/facultyCards";
+import { EFaculty } from "../../enums/Faculties.enum";
 import "./Faculties.css";
 
 export default function Faculties() {
@@ -6,25 +8,25 @@ export default function Faculties() {
     {
       id: 1,
       name: "Gryffindor",
-      image: "/src/assets/images/faculties/gryffindor.png",
+      image: FACULTY_CARD_IMAGES[EFaculty.GRYFFINDOR],
       description: "COURAGE, CHIVALPY,DARING.",
     },
     {
       id: 2,
       name: "Slytherin",
-      image: "/src/assets/images/faculties/slytherin.png",
+      image: FACULTY_CARD_IMAGES[EFaculty.SLYTHERIN],
       description: "AMBITION, CUNNING, RESOURCEFULNESS.",
     },
     {
       id: 3,
       name: "Hufflepuff",
-      image: "/src/assets/images/faculties/hufflepuff.png",
+      image: FACULTY_CARD_IMAGES[EFaculty.HUFFLEPUFF],
       description: "WIT, LEARNING, WISDOM.",
     },
     {
       id: 4,
       name: "Ravenclaw",
-      image: "/src/assets/images/faculties/ravenclaw.png",
+      image: FACULTY_CARD_IMAGES[EFaculty.RAVENCLAW],
       description: "LOYALTY, PATIENCE, HARD WORK.",
     },
   ];
