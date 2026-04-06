@@ -21,10 +21,11 @@
 
 .faculty-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255, 254, 198, 0.35);
+  border-color: var(--faculty-card-hover-border);
   box-shadow:
     0 18px 40px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(255, 254, 198, 0.08) inset;
+    0 0 0 1px color-mix(in srgb, var(--faculty-card-hover-border) 22%, transparent)
+      inset;
 }
 
 .faculty-card:active {
@@ -54,20 +55,25 @@
     0 0 0 1px rgba(255, 254, 198, 0.2) inset;
 }
 
+/* Hover border: midpoint of gradient, nudged brighter (~20% toward white) */
 .faculty-card--gryffindor {
   background: var(--hp-card-griffindor-background);
+  --faculty-card-hover-border: #615449;
 }
 
 .faculty-card--slytherin {
   background: var(--hp-card-slytherin-background);
+  --faculty-card-hover-border: #536562;
 }
 
 .faculty-card--hufflepuff {
   background: var(--hp-card-hufflepuff-background);
+  --faculty-card-hover-border: #847d54;
 }
 
 .faculty-card--ravenclaw {
   background: var(--hp-card-ravenclaw-background);
+  --faculty-card-hover-border: #496570;
 }
 
 .faculty-card__name {
