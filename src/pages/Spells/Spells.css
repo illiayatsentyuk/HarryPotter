@@ -67,149 +67,11 @@
   letter-spacing: -0.9px;
   color: #978f82;
   outline: none;
-  cursor: default;
+  cursor: text;
 }
 
 .spells__search-input::placeholder {
   color: rgba(151, 143, 130, 0.55);
-}
-
-.spells__filter-wrap {
-  flex-shrink: 0;
-  position: relative;
-}
-
-.spells__filter-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  padding: 0;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  background: transparent;
-  color: #978f82;
-  cursor: pointer;
-  transition: color 0.15s, border-color 0.15s, background 0.15s;
-}
-
-.spells__filter-btn:hover {
-  color: #eee7d0;
-  border-color: #494136;
-  background: #1e2e26;
-}
-
-.spells__filter-btn--open {
-  color: #ab9a6c;
-  border-color: #ab9a6c;
-  background: #1e2e26;
-}
-
-/* ---- Sort popup ---- */
-.spells__sort-popup {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  z-index: 50;
-  width: 190px;
-  padding: 14px 12px 12px;
-  background: #16211b;
-  border: 1px solid #494136;
-  border-radius: 12px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
-}
-
-.spells__sort-popup-label {
-  margin: 0 0 8px 2px;
-  font-family: "Tenor Sans", sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #5a5449;
-}
-
-.spells__sort-popup-label--spaced {
-  margin-top: 4px;
-}
-
-.spells__sort-keys {
-  list-style: none;
-  margin: 0 0 10px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.spells__sort-key-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 10px;
-  border: 1px solid transparent;
-  border-radius: 7px;
-  background: transparent;
-  font-family: "Tenor Sans", sans-serif;
-  font-size: 15px;
-  letter-spacing: -0.03em;
-  color: #978f82;
-  cursor: pointer;
-  transition: color 0.12s, background 0.12s, border-color 0.12s;
-  text-align: left;
-}
-
-.spells__sort-key-btn:hover {
-  color: #eee7d0;
-  background: #1e2e26;
-}
-
-.spells__sort-key-btn--active {
-  color: #ab9a6c;
-  background: #1a2920;
-  border-color: #494136;
-}
-
-.spells__sort-dir {
-  display: flex;
-  gap: 6px;
-  border-top: 1px solid #2a3530;
-  padding-top: 10px;
-}
-
-.spells__sort-dir-btn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 5px 0;
-  border: 1px solid #2a3530;
-  border-radius: 6px;
-  background: transparent;
-  font-family: "Tenor Sans", sans-serif;
-  font-size: 13px;
-  letter-spacing: -0.02em;
-  color: #5a5449;
-  cursor: pointer;
-  transition: color 0.12s, background 0.12s, border-color 0.12s;
-}
-
-.spells__sort-dir-btn:hover {
-  color: #eee7d0;
-  border-color: #494136;
-}
-
-.spells__sort-dir-btn--active {
-  color: #ab9a6c;
-  background: #1a2920;
-  border-color: #ab9a6c;
-}
-
-.spells__toolbar-icon {
-  display: block;
-  color: inherit;
 }
 
 .spells__table-wrap {
@@ -260,11 +122,6 @@
   justify-content: center;
   gap: 8px;
   height: 100%;
-}
-
-.spells__sort-arrow {
-  color: #ab9a6c;
-  flex-shrink: 0;
 }
 
 .spells__empty {
