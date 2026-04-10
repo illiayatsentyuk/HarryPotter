@@ -18,7 +18,6 @@ function toSpellRow(spell: HpApiSpell, index: number): SpellRow {
   return {
     id: index + 1,
     name: spell.name,
-    faculty: "—",
     effects: spell.description,
     status: UNFORGIVABLE.has(spell.name) ? "Forbidden" : "Approved",
   };

@@ -5,8 +5,6 @@ import type { SpellRow } from "../../types/spell.type";
 import { filterSpellsByName } from "../../utils/spells";
 import "./Spells.css";
 
-const TABLE_HEADERS = ["#", "Name", "Faculty", "Effects", "Status"] as const;
-
 export default function Spells() {
   const [rows, setRows] = useState<SpellRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -54,49 +52,50 @@ export default function Spells() {
         </div>
       </div>
 
-      <div className="spells__table-wrap">
-        <table className="spells__table" aria-label="Magical spells">
-          <thead>
-            <tr>
-              {TABLE_HEADERS.map((label) => (
-                <th key={label} scope="col">
-                  <span className="spells__th-inner">{label}</span>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {loading ? (
-              <tr>
-                <td className="spells__empty" colSpan={5}>
-                  Loading spells…
-                </td>
-              </tr>
-            ) : error ? (
-              <tr>
-                <td className="spells__empty" colSpan={5}>
-                  {error}
-                </td>
-              </tr>
-            ) : visibleRows.length === 0 ? (
-              <tr>
-                <td className="spells__empty" colSpan={5}>
-                  No spells match that name.
-                </td>
-              </tr>
-            ) : (
-              visibleRows.map((spell) => (
-                <tr key={spell.id}>
-                  <td>{spell.id}</td>
-                  <td>{spell.name}</td>
-                  <td>{spell.faculty}</td>
-                  <td>{spell.effects}</td>
-                  <td>{spell.status}</td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+      <div className="spells__content">
+        {loading ? (
+          <p className="spells__state" role="status">
+            Loading spells…
+          </p>
+        ) : error ? (
+          <p className="spells__state spells__state--error" role="alert">
+            {error}
+          </p>
+        ) : visibleRows.length === 0 ? (
+          <p className="spells__state">No spells match that name.</p>
+        ) : (
+          <ul className="spells__grid" aria-label="Spell cards">
+            {visibleRows.map((spell) => (
+              <li key={spell.id}>
+                <article
+                  className="spells__card"
+                  aria-labelledby={`spell-title-${spell.id}`}
+                >
+                  <div className="spells__card-top">
+                    <span className="spells__card-index" aria-hidden>
+                      #{spell.id}
+                    </span>
+                    <span
+                      className={`spells__card-badge${spell.status === "Forbidden" ? " spells__card-badge--forbidden" : ""}`}
+                    >
+                      {spell.status}
+                    </span>
+                  </div>
+                  <h2
+                    id={`spell-title-${spell.id}`}
+                    className="spells__card-title"
+                  >
+                    {spell.name}
+                  </h2>
+                  <div className="spells__card-body">
+                    <p className="spells__card-effects-label">Effects</p>
+                    <p className="spells__card-effects">{spell.effects}</p>
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   );
