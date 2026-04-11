@@ -1,4 +1,3 @@
-import { FACULTY_CARD_IMAGES } from "../../assets/images/facultyCards";
 import { EFaculty } from "../../enums/Faculties.enum";
 import type { Faculty } from "../../types/Faculty.type";
 import type { QuizQuestion } from "../../types/quiz.type";

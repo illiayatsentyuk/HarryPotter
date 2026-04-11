@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import MainLayout from "./layouts/MainLayout.tsx";
 import NotFound from "./pages/404/404.tsx";
-import Characters from "./pages/Characters.tsx";
+import Characters from "./pages/Characters/Characters.tsx";
 import Faculties from "./pages/Faculties/Faculties.tsx";
 import Faculty from "./pages/Faculty/Faculty.tsx";
 import Home from "./pages/Home/Home.tsx";
