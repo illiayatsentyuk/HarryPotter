@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { isQuizComplete, QUIZ_QUESTIONS } from "./quizData";
+import { facultyFromQuizAnswers, QUIZ_QUESTIONS } from "./quizData";
 import "./Quiz.css";
 
 export default function Quiz() {
@@ -14,7 +14,7 @@ export default function Quiz() {
   };
 
   const handleShowResults = () => {
-    if (!isQuizComplete(answers)) {
+    if (facultyFromQuizAnswers(answers) === null) {
       setSubmitted(true);
       return;
     }

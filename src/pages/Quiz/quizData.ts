@@ -2,14 +2,7 @@ import { FACULTY_CARD_IMAGES } from "../../assets/images/facultyCards";
 import { EFaculty } from "../../enums/Faculties.enum";
 import type { Faculty } from "../../types/Faculty.type";
 import type { QuizQuestion } from "../../types/quiz.type";
-
-/** Option index maps to house (same order for every question). */
-const OPTION_TO_FACULTY: EFaculty[] = [
-  EFaculty.SLYTHERIN,
-  EFaculty.GRYFFINDOR,
-  EFaculty.RAVENCLAW,
-  EFaculty.HUFFLEPUFF,
-];
+import { FACULTIES_LIST } from "../Faculties/facultiesList";
 
 export const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
@@ -76,88 +69,113 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   },
 ];
 
-export const QUIZ_QUESTION_IDS = QUIZ_QUESTIONS.map((q) => q.id);
-
-export function isQuizComplete(answers: Record<string, number>): boolean {
-  return QUIZ_QUESTION_IDS.every((id) => answers[id] !== undefined);
-}
-
-export function computeFacultyFromAnswers(
+/**
+ * Returns the faculty card when every question is answered; otherwise `null`.
+ * Option index 0–3 maps to Slytherin, Gryffindor, Ravenclaw, Hufflepuff; ties use that order for the winner.
+ */
+export function facultyFromQuizAnswers(
   answers: Record<string, number>,
-): EFaculty {
-  const tally: Record<EFaculty, number> = {
-    [EFaculty.GRYFFINDOR]: 0,
-    [EFaculty.SLYTHERIN]: 0,
-    [EFaculty.HUFFLEPUFF]: 0,
-    [EFaculty.RAVENCLAW]: 0,
-  };
+): Faculty | null {
+  if (answers["q1"] === undefined) return null;
+  if (answers["q2"] === undefined) return null;
+  if (answers["q3"] === undefined) return null;
+  if (answers["q4"] === undefined) return null;
+  if (answers["q5"] === undefined) return null;
+  if (answers["q6"] === undefined) return null;
 
-  for (const id of QUIZ_QUESTION_IDS) {
-    const idx = answers[id];
-    if (idx === undefined || idx < 0 || idx > 3) continue;
-    const house = OPTION_TO_FACULTY[idx];
-    tally[house] += 1;
+  let g = 0;
+  let s = 0;
+  let r = 0;
+  let h = 0;
+
+  let idx = answers["q1"];
+  if (idx === 0) {
+    s += 1;
+  } else if (idx === 1) {
+    g += 1;
+  } else if (idx === 2) {
+    r += 1;
+  } else if (idx === 3) {
+    h += 1;
   }
 
-  /** Deterministic tie-break when counts are equal. */
-  const tieOrder: EFaculty[] = [
-    EFaculty.GRYFFINDOR,
-    EFaculty.SLYTHERIN,
-    EFaculty.RAVENCLAW,
-    EFaculty.HUFFLEPUFF,
-  ];
-
-  let winner = tieOrder[0];
-  let best = -1;
-  for (const f of tieOrder) {
-    if (tally[f] > best) {
-      best = tally[f];
-      winner = f;
-    }
+  idx = answers["q2"];
+  if (idx === 0) {
+    s += 1;
+  } else if (idx === 1) {
+    g += 1;
+  } else if (idx === 2) {
+    r += 1;
+  } else if (idx === 3) {
+    h += 1;
   }
-  return winner;
-}
 
-/** Display data aligned with `Faculties` page / FacultyCard (ids match `Faculties.tsx`). */
-const FACULTY_CARD_ID: Record<EFaculty, number> = {
-  [EFaculty.GRYFFINDOR]: 1,
-  [EFaculty.SLYTHERIN]: 2,
-  [EFaculty.HUFFLEPUFF]: 3,
-  [EFaculty.RAVENCLAW]: 4,
-};
+  idx = answers["q3"];
+  if (idx === 0) {
+    s += 1;
+  } else if (idx === 1) {
+    g += 1;
+  } else if (idx === 2) {
+    r += 1;
+  } else if (idx === 3) {
+    h += 1;
+  }
 
-export const FACULTY_RESULT_META: Record<
-  EFaculty,
-  { name: string; description: string; image: string }
-> = {
-  [EFaculty.GRYFFINDOR]: {
-    name: "Gryffindor",
-    description: "COURAGE, CHIVALPY,DARING.",
-    image: FACULTY_CARD_IMAGES[EFaculty.GRYFFINDOR],
-  },
-  [EFaculty.SLYTHERIN]: {
-    name: "Slytherin",
-    description: "AMBITION, CUNNING, RESOURCEFULNESS.",
-    image: FACULTY_CARD_IMAGES[EFaculty.SLYTHERIN],
-  },
-  [EFaculty.HUFFLEPUFF]: {
-    name: "Hufflepuff",
-    description: "WIT, LEARNING, WISDOM.",
-    image: FACULTY_CARD_IMAGES[EFaculty.HUFFLEPUFF],
-  },
-  [EFaculty.RAVENCLAW]: {
-    name: "Ravenclaw",
-    description: "LOYALTY, PATIENCE, HARD WORK.",
-    image: FACULTY_CARD_IMAGES[EFaculty.RAVENCLAW],
-  },
-};
+  idx = answers["q4"];
+  if (idx === 0) {
+    s += 1;
+  } else if (idx === 1) {
+    g += 1;
+  } else if (idx === 2) {
+    r += 1;
+  } else if (idx === 3) {
+    h += 1;
+  }
 
-export function getFacultyForCard(ef: EFaculty): Faculty {
-  const m = FACULTY_RESULT_META[ef];
-  return {
-    id: FACULTY_CARD_ID[ef],
-    name: m.name,
-    image: m.image,
-    description: m.description,
-  };
+  idx = answers["q5"];
+  if (idx === 0) {
+    s += 1;
+  } else if (idx === 1) {
+    g += 1;
+  } else if (idx === 2) {
+    r += 1;
+  } else if (idx === 3) {
+    h += 1;
+  }
+
+  idx = answers["q6"];
+  if (idx === 0) {
+    s += 1;
+  } else if (idx === 1) {
+    g += 1;
+  } else if (idx === 2) {
+    r += 1;
+  } else if (idx === 3) {
+    h += 1;
+  }
+
+  let winner = EFaculty.GRYFFINDOR;
+  let best = g;
+  if (s > best) {
+    best = s;
+    winner = EFaculty.SLYTHERIN;
+  }
+  if (r > best) {
+    best = r;
+    winner = EFaculty.RAVENCLAW;
+  }
+  if (h > best) {
+    best = h;
+    winner = EFaculty.HUFFLEPUFF;
+  }
+
+  if (winner === EFaculty.GRYFFINDOR) {
+    return FACULTIES_LIST[0];
+  } else if (winner === EFaculty.SLYTHERIN) {
+    return FACULTIES_LIST[1];
+  } else if (winner === EFaculty.HUFFLEPUFF) {
+    return FACULTIES_LIST[2];
+  } else {
+    return FACULTIES_LIST[3];
+  }
 }

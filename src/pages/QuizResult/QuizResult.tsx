@@ -1,11 +1,6 @@
 import { Navigate, useLocation } from "react-router";
-import { useMemo } from "react";
 import FacultyCard from "../../components/faculties/FacultyCard";
-import {
-  computeFacultyFromAnswers,
-  getFacultyForCard,
-  isQuizComplete,
-} from "../Quiz/quizData";
+import { facultyFromQuizAnswers } from "../Quiz/quizData";
 import type { QuizResultLocationState } from "../../types/quiz.type";
 import "./QuizResult.css";
 
@@ -14,16 +9,14 @@ export default function QuizResult() {
   const state = location.state as QuizResultLocationState | null;
   const answers = state?.answers;
 
-  const facultyEnum = useMemo(() => {
-    if (!answers || !isQuizComplete(answers)) return null;
-    return computeFacultyFromAnswers(answers);
-  }, [answers]);
-
-  if (!answers || !isQuizComplete(answers) || !facultyEnum) {
+  if (!answers) {
     return <Navigate to="/quiz" replace />;
   }
 
-  const faculty = getFacultyForCard(facultyEnum);
+  const faculty = facultyFromQuizAnswers(answers);
+  if (!faculty) {
+    return <Navigate to="/quiz" replace />;
+  }
 
   return (
     <section className="quiz-result">
