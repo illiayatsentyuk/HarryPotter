@@ -1,6 +1,7 @@
 import type { PotterCharacter } from "../types/character.type";
 
 const POTTER_DB_BASE = "https://api.potterdb.com";
+const CACHE_NAME = "potter-db-cache";
 
 /** Slugs for `/v1/characters/{slug}` — see https://docs.potterdb.com/apis/rest */
 export const FEATURED_CHARACTER_SLUGS = [
@@ -40,14 +41,23 @@ export async function fetchPotterDbCharactersBySlugs(
   slugs: readonly string[],
   signal?: AbortSignal,
 ): Promise<PotterCharacter[]> {
+  const cache = await caches.open(CACHE_NAME);
+
   const results = await Promise.all(
     slugs.map(async (slug) => {
-      const res = await fetch(`${POTTER_DB_BASE}/v1/characters/${slug}`, {
-        signal,
-      });
+      const url = `${POTTER_DB_BASE}/v1/characters/${slug}`;
+      const cached = await cache.match(url);
+      if (cached) {
+        const json = (await cached.json()) as JsonApiCharacterResource;
+        return parseCharacter(json);
+      }
+
+      const res = await fetch(url, { signal });
       if (!res.ok) {
         throw new Error(`Failed to load character (${res.status})`);
       }
+
+      await cache.put(url, res.clone());
       const json = (await res.json()) as JsonApiCharacterResource;
       return parseCharacter(json);
     }),
