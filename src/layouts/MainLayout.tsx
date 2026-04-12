@@ -2,7 +2,6 @@ import { NavLink, Outlet, useLocation } from "react-router";
 import {
   footerLogo,
   headerLogo,
-  searchIcon,
   userIcon,
 } from "../assets/images/layout";
 import "./MainLayout.css";
