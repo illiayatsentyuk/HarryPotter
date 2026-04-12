@@ -10,7 +10,6 @@ export default function FacultyCard({ faculty }: { faculty: Faculty }) {
     <div
       className={`faculty-card faculty-card--${facultyKey}`}
       key={faculty.id}
-      onClick={() => navigate(`/faculty/${facultyKey}`)}
     >
       <img
         className="faculty-card__image"
@@ -19,7 +18,7 @@ export default function FacultyCard({ faculty }: { faculty: Faculty }) {
       />
       <h2 className="faculty-card__name">{faculty.name}</h2>
       <p className="faculty-card__description">{faculty.description}</p>
-      <button className="faculty-card__button" type="button">
+      <button className="faculty-card__button" type="button" onClick={() => navigate(`/faculty/${facultyKey}`)}>
         ENTRY TO COMMON ROOM
       </button>
     </div>

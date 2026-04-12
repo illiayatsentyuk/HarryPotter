@@ -20,11 +20,13 @@ export default function MainLayout() {
   return (
     <div className="main-layout">
       <header className="header">
-        <img
-          src={headerLogo}
-          className="header__logo"
-          alt="Harry Potter"
-        />
+        <NavLink to="/">
+          <img
+            src={headerLogo}
+            className="header__logo"
+            alt="Harry Potter"
+          />
+        </NavLink>
         <nav className="header__nav">
           <ul className="header__nav-list">
             {navItems.map((item) => (
@@ -57,13 +59,6 @@ export default function MainLayout() {
           </ul>
         </nav>
         <div className="header__actions">
-          <button className="header__action-button" type="button">
-            <img
-              src={searchIcon}
-              className="header__action-icon"
-              alt="Search"
-            />
-          </button>
           <button className="header__action-button" type="button">
             <img
               src={userIcon}

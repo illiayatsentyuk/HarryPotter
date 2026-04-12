@@ -25,8 +25,8 @@
   max-width: 879px;
   height: 1px;
   margin: 0 0 53px;
-  background: #ab9a6c;
-  box-shadow: 0 4px 3.5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 4px 0px #00000080;
+  background: linear-gradient(270deg, rgba(255, 254, 198, 0) 0%, #A0804A 50%, rgba(255, 254, 198, 0) 99.52%);
 }
 
 .spells__toolbar {

@@ -26,7 +26,7 @@ export default function Characters() {
 
   return (
     <section className="characters">
-      <h1 className="characters__title">NOTABLE WITCHES &amp; WIZARDS</h1>
+      <h1 className="characters__title">9¾  THOUSAND OCCUMY MEMBERS INITIATED</h1>
       <div className="characters__divider" aria-hidden />
 
       <div className="characters__content">
