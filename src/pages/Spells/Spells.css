@@ -92,53 +92,53 @@
   color: #c4a574;
 }
 
-.spells__grid {
+.spells__list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  align-items: start;
-}
-
-.spells__card {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 18px 18px 16px;
-  border: 1px solid #fffec6;
-  border-radius: 12px;
-  background: #16211b;
-  transition:
-    border-color 0.18s ease,
-    box-shadow 0.18s ease,
-    transform 0.18s ease;
+  gap: 0;
 }
 
-.spells__card:hover {
-  border-color: #ab9a6c;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-  transform: translateY(-2px);
-}
-
-.spells__card-top {
+.spells__row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #1e2d25;
+  transition: background 0.15s ease;
 }
 
-.spells__card-index {
+.spells__row:first-child {
+  border-top: 1px solid #1e2d25;
+}
+
+.spells__row:hover {
+  background: #16211b;
+}
+
+.spells__row-index {
+  flex-shrink: 0;
+  width: 40px;
   font-family: "Tenor Sans", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.04em;
   color: #5a5449;
+  text-align: right;
+}
+
+.spells__row-name {
+  flex-shrink: 0;
+  width: 220px;
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+  color: #eee7d0;
 }
 
 .spells__card-badge {
+  flex-shrink: 0;
   font-family: "Tenor Sans", sans-serif;
   font-size: 11px;
   letter-spacing: 0.06em;
@@ -156,44 +156,15 @@
   background: #1f1515;
 }
 
-.spells__card-title {
-  margin: 0 0 14px;
+.spells__row-effects {
+  flex: 1;
+  min-width: 0;
   font-family: "Tenor Sans", sans-serif;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  color: #eee7d0;
-  word-break: break-word;
-}
-
-.spells__card-body {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #2a3530;
-  min-height: 0;
-}
-
-.spells__card-effects-label {
-  margin: 0 0 6px;
-  font-family: "Tenor Sans", sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #5a5449;
-}
-
-.spells__card-effects {
-  margin: 0;
-  font-family: "Tenor Sans", sans-serif;
-  font-size: 15px;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1.4;
   letter-spacing: -0.02em;
   color: #978f82;
-  max-height: 140px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  word-wrap: break-word;
+  word-break: break-word;
 }
 
 @media (max-width: 720px) {

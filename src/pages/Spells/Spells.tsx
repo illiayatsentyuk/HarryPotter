@@ -64,34 +64,19 @@ export default function Spells() {
         ) : visibleRows.length === 0 ? (
           <p className="spells__state">No spells match that name.</p>
         ) : (
-          <ul className="spells__grid" aria-label="Spell cards">
+          <ul className="spells__list" aria-label="Spell list">
             {visibleRows.map((spell) => (
-              <li key={spell.id}>
-                <article
-                  className="spells__card"
-                  aria-labelledby={`spell-title-${spell.id}`}
+              <li key={spell.id} className="spells__row">
+                <span className="spells__row-index" aria-hidden>
+                  #{spell.id}
+                </span>
+                <span className="spells__row-name">{spell.name}</span>
+                <span
+                  className={`spells__card-badge${spell.status === "Forbidden" ? " spells__card-badge--forbidden" : ""}`}
                 >
-                  <div className="spells__card-top">
-                    <span className="spells__card-index" aria-hidden>
-                      #{spell.id}
-                    </span>
-                    <span
-                      className={`spells__card-badge${spell.status === "Forbidden" ? " spells__card-badge--forbidden" : ""}`}
-                    >
-                      {spell.status}
-                    </span>
-                  </div>
-                  <h2
-                    id={`spell-title-${spell.id}`}
-                    className="spells__card-title"
-                  >
-                    {spell.name}
-                  </h2>
-                  <div className="spells__card-body">
-                    <p className="spells__card-effects-label">Effects</p>
-                    <p className="spells__card-effects">{spell.effects}</p>
-                  </div>
-                </article>
+                  {spell.status}
+                </span>
+                <span className="spells__row-effects">{spell.effects}</span>
               </li>
             ))}
           </ul>
