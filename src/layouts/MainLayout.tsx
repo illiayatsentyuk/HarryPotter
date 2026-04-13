@@ -1,3 +1,4 @@
+import { useLayoutEffect } from "react";
 import { NavLink, Outlet, useLocation } from "react-router";
 import {
   footerLogo,
@@ -8,6 +9,12 @@ import "./MainLayout.css";
 
 export default function MainLayout() {
   const { pathname } = useLocation();
+
+  useLayoutEffect(() => {
+    // pathname is the dependency trigger — scroll the document on every navigation
+    if (!pathname) return;
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const navItems = [
     { label: "The Archive", to: "/" },
