@@ -2,6 +2,7 @@ import { Navigate, useLocation } from "react-router";
 import FacultyCard from "../../components/faculties/FacultyCard";
 import { facultyFromQuizAnswers } from "../Quiz/quizData";
 import type { QuizResultLocationState } from "../../types/quiz.type";
+import DeerImage from "../../assets/images/deer.jpg"
 import "./QuizResult.css";
 
 export default function QuizResult() {
@@ -19,6 +20,8 @@ export default function QuizResult() {
   }
 
   return (
+    <>
+    <img className="quiz-result__image" src={DeerImage} alt="" />
     <section className="quiz-result">
       <h1 className="quiz-result__title">
         <span className="quiz-result__title-line">CONGRATULATIONS!</span>
@@ -29,5 +32,6 @@ export default function QuizResult() {
 
       <FacultyCard faculty={faculty} />
     </section>
+    </>
   );
 }

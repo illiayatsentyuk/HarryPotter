@@ -7,12 +7,25 @@
   margin-bottom: 24px;
   margin-top: 57px;
 }
+.faculties__image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 542px;
+  height: 581px;
+  opacity: 0.5;
+  object-fit: cover;
+  z-index: 0;
+  box-shadow: 50px 50px 50px 0px #00000040;
+}
 .faculties__list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
   gap: 24px;
+  z-index: 1;
+  position: relative;
 }
 .faculties__title {
   font-size: 48px;
@@ -23,6 +36,8 @@
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 24px;
+  z-index: 1;
+  position: relative;
 }
 
 @media (max-width: 1060px) {

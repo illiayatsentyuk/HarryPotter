@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { homeCupImage, homeHeroImage } from "../../assets/images/home";
+import DeerImage from "../../assets/images/deer.jpg"
 import "./Home.css";
 
 export default function Home() {
@@ -38,6 +39,7 @@ export default function Home() {
       </div>
 
       <div className="home__news">
+        <img className="home__news-image" src={DeerImage} alt="" />
         <h2 className="home__news-heading">THE DAILY PROPHET</h2>
 
         <div className="home__news-grid">

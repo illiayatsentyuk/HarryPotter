@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CharacterCard from "../../components/characters/CharacterCard";
 import { fetchFeaturedPotterCharacters } from "../../api/potterDb";
 import type { PotterCharacter } from "../../types/character.type";
+import DeerImage from "../../assets/images/deer.jpg"
 import "./Characters.css";
 
 export default function Characters() {
@@ -25,29 +26,32 @@ export default function Characters() {
   }, []);
 
   return (
-    <section className="characters">
-      <h1 className="characters__title">9¾  THOUSAND OCCUMY MEMBERS INITIATED</h1>
-      <div className="characters__divider" aria-hidden />
+    <>
+      <img className="characters__image" src={DeerImage} alt="" />
+      <section className="characters">
+        <h1 className="characters__title">9¾  THOUSAND OCCUMY MEMBERS INITIATED</h1>
+        <div className="characters__divider" aria-hidden />
 
-      <div className="characters__content">
-        {loading ? (
-          <p className="characters__state" role="status">
-            Loading characters…
-          </p>
-        ) : error ? (
-          <p className="characters__state characters__state--error" role="alert">
-            {error}
-          </p>
-        ) : (
-          <ul className="characters__grid" aria-label="Character cards">
-            {characters.map((c) => (
-              <li key={c.id} className="characters__item">
-                <CharacterCard character={c} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </section>
+        <div className="characters__content">
+          {loading ? (
+            <p className="characters__state" role="status">
+              Loading characters…
+            </p>
+          ) : error ? (
+            <p className="characters__state characters__state--error" role="alert">
+              {error}
+            </p>
+          ) : (
+            <ul className="characters__grid" aria-label="Character cards">
+              {characters.map((c) => (
+                <li key={c.id} className="characters__item">
+                  <CharacterCard character={c} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </section>
+    </>
   );
 }

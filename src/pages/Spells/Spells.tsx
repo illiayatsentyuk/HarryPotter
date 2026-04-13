@@ -3,6 +3,7 @@ import { IoFunnel, IoSearch } from "react-icons/io5";
 import { fetchHpApiSpells } from "../../api/hpSpells";
 import type { SpellRow, SpellStatus } from "../../types/spell.type";
 import { filterSpellsByName, filterSpellsByStatus } from "../../utils/spells";
+import DeerImage from "../../assets/images/deer.jpg"
 import "./Spells.css";
 
 type StatusFilter = SpellStatus | "All";
@@ -51,6 +52,8 @@ export default function Spells() {
   );
 
   return (
+    <>
+    <img className="spells__image" src={DeerImage} alt="" />
     <section className="spells">
       <h1 className="spells__title">MAGICAL ARSENAL</h1>
       <div className="spells__divider" aria-hidden />
@@ -136,5 +139,6 @@ export default function Spells() {
         )}
       </div>
     </section>
+    </>
   );
 }

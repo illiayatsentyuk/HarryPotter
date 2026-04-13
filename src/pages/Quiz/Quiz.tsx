@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { facultyFromQuizAnswers, QUIZ_QUESTIONS } from "./quizData";
+import DeerImage from "../../assets/images/deer.jpg"
 import "./Quiz.css";
 
 export default function Quiz() {
@@ -26,6 +27,8 @@ export default function Quiz() {
   ).length;
 
   return (
+    <>  
+    <img className="quiz__image" src={DeerImage} alt="" />
     <div className="quiz">
       <h1 className="quiz__title">FIND OUT WHICH FACULTY YOU&apos;RE IN</h1>
 
@@ -75,5 +78,6 @@ export default function Quiz() {
         )}
       </div>
     </div>
+    </>
   );
 }
