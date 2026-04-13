@@ -24,6 +24,13 @@ type JsonApiCharacterResource = {
     attributes: {
       name: string;
       image: string | null;
+      house: string | null;
+      born: string | null;
+      species: string | null;
+      gender: string | null;
+      blood_status: string | null;
+      patronus: string | null;
+      wands: string[] | null;
     };
   };
 };
@@ -34,6 +41,13 @@ function parseCharacter(json: JsonApiCharacterResource): PotterCharacter {
     id,
     name: attributes.name,
     image: attributes.image,
+    house: attributes.house,
+    born: attributes.born,
+    species: attributes.species,
+    gender: attributes.gender,
+    bloodStatus: attributes.blood_status,
+    patronus: attributes.patronus,
+    wands: attributes.wands,
   };
 }
 
