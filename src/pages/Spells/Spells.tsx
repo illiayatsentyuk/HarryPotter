@@ -1,9 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
-import { IoSearch } from "react-icons/io5";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { IoFunnel, IoSearch } from "react-icons/io5";
 import { fetchHpApiSpells } from "../../api/hpSpells";
-import type { SpellRow } from "../../types/spell.type";
-import { filterSpellsByName } from "../../utils/spells";
+import type { SpellRow, SpellStatus } from "../../types/spell.type";
+import { filterSpellsByName, filterSpellsByStatus } from "../../utils/spells";
 import "./Spells.css";
+
+type StatusFilter = SpellStatus | "All";
+
+const STATUS_OPTIONS: StatusFilter[] = ["All", "Approved", "Forbidden"];
 
 export default function Spells() {
   const [rows, setRows] = useState<SpellRow[]>([]);
@@ -11,6 +15,10 @@ export default function Spells() {
   const [error, setError] = useState<string | null>(null);
 
   const [query, setQuery] = useState("");
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>("All");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctrl = new AbortController();
@@ -27,9 +35,19 @@ export default function Spells() {
     return () => ctrl.abort();
   }, []);
 
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    }
+    if (dropdownOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [dropdownOpen]);
+
   const visibleRows = useMemo(
-    () => filterSpellsByName(rows, query),
-    [query, rows],
+    () => filterSpellsByStatus(filterSpellsByName(rows, query), statusFilter),
+    [query, rows, statusFilter],
   );
 
   return (
@@ -50,6 +68,41 @@ export default function Spells() {
             autoComplete="off"
           />
         </div>
+
+        <div className="spells__filter" ref={dropdownRef}>
+          <button
+            className={`spells__filter-btn${statusFilter !== "All" ? " spells__filter-btn--active" : ""}`}
+            onClick={() => setDropdownOpen((o) => !o)}
+            aria-haspopup="listbox"
+            aria-expanded={dropdownOpen}
+            aria-label="Filter by status"
+            title="Filter by status"
+          >
+            <IoFunnel size={18} aria-hidden />
+            {statusFilter !== "All" && (
+              <span className="spells__filter-label">{statusFilter}</span>
+            )}
+          </button>
+
+          {dropdownOpen && (
+            <ul className="spells__filter-dropdown" role="listbox" aria-label="Filter options">
+              {STATUS_OPTIONS.map((opt) => (
+                <li
+                  key={opt}
+                  role="option"
+                  aria-selected={statusFilter === opt}
+                  className={`spells__filter-option${statusFilter === opt ? " spells__filter-option--selected" : ""}${opt === "Forbidden" ? " spells__filter-option--forbidden" : ""}${opt === "Approved" ? " spells__filter-option--approved" : ""}`}
+                  onClick={() => {
+                    setStatusFilter(opt);
+                    setDropdownOpen(false);
+                  }}
+                >
+                  {opt}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
 
       <div className="spells__content">
@@ -62,7 +115,7 @@ export default function Spells() {
             {error}
           </p>
         ) : visibleRows.length === 0 ? (
-          <p className="spells__state">No spells match that name.</p>
+          <p className="spells__state">No spells match your filters.</p>
         ) : (
           <ul className="spells__list" aria-label="Spell list">
             {visibleRows.map((spell) => (

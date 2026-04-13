@@ -34,6 +34,8 @@
   max-width: 1200px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 41px;
 }
 
@@ -73,6 +75,100 @@
 .spells__search-input::placeholder {
   color: rgba(151, 143, 130, 0.55);
 }
+
+/* ── Filter ── */
+
+.spells__filter {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.spells__filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 50px;
+  padding: 0 14px;
+  border-radius: 15px;
+  border: 1px solid #494136;
+  background: #16211b;
+  color: #978f82;
+  cursor: pointer;
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.spells__filter-btn:hover {
+  border-color: #6b5d3e;
+  color: #c4a574;
+}
+
+.spells__filter-btn--active {
+  border-color: #ab9a6c;
+  color: #ab9a6c;
+}
+
+.spells__filter-label {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+.spells__filter-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  min-width: 140px;
+  border-radius: 12px;
+  border: 1px solid #494136;
+  background: #16211b;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.spells__filter-option {
+  padding: 10px 18px;
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #978f82;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.spells__filter-option:hover {
+  background: #1e2d25;
+  color: #c4a574;
+}
+
+.spells__filter-option--selected {
+  color: #ab9a6c;
+}
+
+.spells__filter-option--approved:hover {
+  color: #8fbf8f;
+}
+
+.spells__filter-option--approved.spells__filter-option--selected {
+  color: #8fbf8f;
+}
+
+.spells__filter-option--forbidden:hover {
+  color: #d4a0a0;
+}
+
+.spells__filter-option--forbidden.spells__filter-option--selected {
+  color: #d4a0a0;
+}
+
+/* ── Content ── */
 
 .spells__content {
   width: 100%;
