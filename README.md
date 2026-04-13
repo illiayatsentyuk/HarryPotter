@@ -42,12 +42,13 @@ The app consists of six main sections navigable from the top nav:
 
 | Tool | Version | Purpose |
 |---|---|---|
-| React | 19 | UI library |
-| React Router | 7 | Client-side routing |
+| React | 19.2 | UI library |
+| React Router | 7.13 | Client-side routing |
 | TypeScript | 5.9 | Static typing |
-| Vite | 8 | Dev server and bundler |
+| Vite | 8.0 | Dev server and bundler |
 | Biome | 2.4 | Linting and formatting |
-| react-icons | 5 | Icon components |
+| ESLint | 9 | Additional static analysis (editor integration) |
+| react-icons | 5.6 | Icon components |
 
 External APIs (no API key required):
 - [Potter DB](https://potterdb.com) — character data
@@ -86,14 +87,37 @@ npm run lint:check
 
 ```
 src/
-├── api/              # External API calls and caching
-├── assets/           # Global CSS, icons, and image imports
-├── components/       # Reusable UI components
-├── enums/            # Shared TypeScript enums
-├── layouts/          # App shell (header, footer, nav)
-├── pages/            # Route-level page components
-├── types/            # Shared TypeScript types
-└── utils/            # Pure utility functions
+├── main.tsx                        # App entry point
+├── App.tsx                         # Root router setup
+├── api/                            # External API calls and caching
+│   ├── potterDb.ts
+│   └── hpSpells.ts
+├── assets/
+│   ├── main.css                    # Global styles and CSS custom properties
+│   ├── icons/                      # SVG icon files
+│   └── images/                     # Image imports and barrel files
+├── components/                     # Reusable UI components
+│   ├── characters/CharacterCard
+│   └── faculties/FacultyCard
+├── enums/
+│   └── Faculties.enum.ts
+├── layouts/
+│   └── MainLayout                  # Persistent app shell
+├── pages/
+│   ├── Home/
+│   ├── Faculties/
+│   │   ├── Faculties.tsx
+│   │   └── facultiesList.ts        # Static house data
+│   ├── Faculty/
+│   ├── Characters/
+│   ├── Spells/
+│   ├── Quiz/
+│   │   ├── Quiz.tsx
+│   │   └── quizData.ts             # Questions and scoring logic
+│   ├── QuizResult/
+│   └── 404/
+├── types/                          # Shared TypeScript types
+└── utils/                          # Pure utility functions
 ```
 
 ---
@@ -106,7 +130,7 @@ Landing page introducing the app. Contains a hero section with a call-to-action 
 
 ### `Faculties` — `/faculties`
 
-Displays a 2-column responsive grid of all four Hogwarts houses (Gryffindor, Slytherin, Hufflepuff, Ravenclaw) using the `FacultyCard` component. Clicking a card navigates to that house's detail page.
+Displays a 2-column responsive grid of all four Hogwarts houses (Gryffindor, Slytherin, Hufflepuff, Ravenclaw) using the `FacultyCard` component. Clicking a card navigates to that house's detail page. The static house list is defined in `facultiesList.ts` as `FACULTIES_LIST`, which couples each house name with its card image and motto.
 
 ### `Faculty` — `/faculty/:name`
 
@@ -122,7 +146,12 @@ Fetches all spells from the HP API on mount and renders them as cards. Includes 
 
 ### `Quiz` — `/quiz`
 
-A 6-question personality quiz. Each question presents four radio-button options mapped to a Hogwarts house. On submission, answers are validated (all questions must be answered), the winning house is calculated, and the user is navigated to `/quiz-result` with the answers passed via router state.
+A 6-question personality quiz. Each question presents four radio-button options mapped to a Hogwarts house. On submission, answers are validated (all questions must be answered), the winning house is calculated via `facultyFromQuizAnswers` from `quizData.ts`, and the user is navigated to `/quiz-result` with the answers passed via router state.
+
+The quiz logic lives entirely in `quizData.ts`:
+
+- `QUIZ_QUESTIONS` — the array of `QuizQuestion` objects shown in the UI.
+- `facultyFromQuizAnswers(answers)` — tallies the selected option indices (0 = Slytherin, 1 = Gryffindor, 2 = Ravenclaw, 3 = Hufflepuff) and returns the `Faculty` with the highest count. Ties are broken in Gryffindor → Slytherin → Ravenclaw → Hufflepuff order.
 
 ### `QuizResult` — `/quiz-result`
 
@@ -208,11 +237,12 @@ Centralised image imports to avoid repetitive relative paths throughout componen
 | `home.ts` | `HOME_IMAGES` | `cup-home.png`, `magic-home.png` |
 | `facultyCards.ts` | `FACULTY_CARD_IMAGES` | `Record<EFaculty, string>` — card images for each house |
 | `facultyPages.ts` | `FACULTY_PAGE_ASSETS` | Per-house object with `background`, `logo`, and `relic` PNG paths |
-| `layout.ts` | Layout images | Header logo, footer logo, search and user SVG icons |
+| `layout.ts` | Layout images | Header logo, footer logo, search and user SVG icons (re-exported from `src/assets/icons/`) |
+| `deer.jpg` | (raw asset) | Full-width decorative background used across all main pages |
 
 ### `src/assets/icons/`
 
-SVG icons used in the header: `search.svg` and `user.svg`.
+SVG icons used in the header: `search.svg` and `user.svg`. Both are re-exported through `layout.ts` so the rest of the codebase imports them from a single place.
 
 ---
 
