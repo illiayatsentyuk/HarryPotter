@@ -1,37 +1,78 @@
+/* ── Perspective wrapper ── */
+
 .character-card {
+  width: 100%;
+  max-width: 280px;
+  perspective: 900px;
+  cursor: default;
+}
+
+/* ── Flip track — height driven by front face ── */
+
+.character-card__inner {
+  position: relative;
+}
+
+/* ── Both faces share base styles ── */
+
+.character-card__face {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 280px;
   border-radius: 12px;
-  overflow: hidden;
   border: 1px solid #494136;
   background: #16211b;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
   will-change: transform;
+  overflow: hidden;
 }
 
-.character-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(171, 154, 108, 0.65);
-  box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(171, 154, 108, 0.2);
+/* Front — normal flow, defines the container height */
+.character-card__face--front {
+  transform: rotateY(0deg);
 }
+
+/* Back — overlays front exactly */
+.character-card__face--back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 28px 22px;
+  box-sizing: border-box;
+  border-color: rgba(171, 154, 108, 0.5);
+  background: #0f1c17;
+}
+
+/* On hover — flip both faces */
+.character-card:hover .character-card__face--front {
+  transform: rotateY(-180deg);
+}
+
+.character-card:hover .character-card__face--back {
+  transform: rotateY(0deg);
+}
+
+/* ── Reduced-motion override ── */
 
 @media (prefers-reduced-motion: reduce) {
-  .character-card {
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  .character-card__face {
+    transition: none;
   }
-
-  .character-card:hover {
-    transform: none;
+  .character-card:hover .character-card__face--front {
+    transform: rotateY(0deg);
+  }
+  .character-card:hover .character-card__face--back {
+    transform: rotateY(180deg);
   }
 }
+
+/* ── Front face ── */
 
 .character-card__media {
   aspect-ratio: 3 / 4;
@@ -45,21 +86,6 @@
   object-fit: cover;
   object-position: top center;
   display: block;
-  transition: transform 0.45s ease;
-}
-
-.character-card:hover .character-card__image {
-  transform: scale(1.04);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .character-card__image {
-    transition: none;
-  }
-
-  .character-card:hover .character-card__image {
-    transform: none;
-  }
 }
 
 .character-card__placeholder {
@@ -83,9 +109,32 @@
   line-height: 1.2;
   color: #ab9a6c;
   text-align: center;
-  transition: color 0.3s ease;
 }
 
-.character-card:hover .character-card__name {
-  color: #c9b882;
+/* ── Back face ── */
+
+.character-card__back-title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ab9a6c;
+  text-align: center;
+}
+
+.character-card__back-text {
+  margin: 0;
+  font-family: "Tenor Sans", sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: #978f82;
+  text-align: center;
+}
+
+.character-card__back-rune {
+  font-size: 18px;
+  color: rgba(171, 154, 108, 0.4);
 }
