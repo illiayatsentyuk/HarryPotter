@@ -72,11 +72,13 @@ export default function MainLayout() {
       </main>
       <footer className="footer">
         <div className="footer__top">
-          <img
-            className="footer__logo"
-            src={footerLogo}
-            alt="Harry Potter FunClub"
-          />
+          <NavLink to="/">
+            <img
+              className="footer__logo"
+              src={footerLogo}
+              alt="Harry Potter FunClub"
+            />
+          </NavLink>
           <nav className="footer__nav" aria-label="Footer">
             <a className="footer__link" href="#">
               Member Codex
