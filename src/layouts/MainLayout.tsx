@@ -20,7 +20,6 @@ export default function MainLayout() {
     { label: "The Archive", to: "/" },
     { label: "Faculties", to: "/faculties" },
     { label: "Characters", to: "/characters" },
-    { label: "Spells", to: "/spells" },
   ];
 
   return (

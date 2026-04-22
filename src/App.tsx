@@ -15,7 +15,6 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/quiz" element={<Quiz />} />
           <Route path="/quiz-result" element={<QuizResult />} />
           <Route path="/faculties" element={<Faculties />} />
           <Route path="/characters" element={<Characters />} />
